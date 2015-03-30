@@ -1,0 +1,49 @@
+commit 694135a5ad13f500b40579d6381657a09f161f83
+Author: Oscar <oscard241@gmail.com>
+Date:   Sun Mar 29 23:08:59 2015 -0600
+
+    preparando estructura del proyecto
+
+commit a81076cc36404eda8211a6c2957d7f1538312fb5
+Author: Oscar <oscard241@gmail.com>
+Date:   Sun Mar 29 22:38:32 2015 -0600
+
+    prueba de que Proyecto aun existe
+
+commit 3593af1d3be1883bb4a931db7fcbc4ff586ac0a5
+Author: Oscar <oscard241@gmail.com>
+Date:   Sun Mar 29 22:34:52 2015 -0600
+
+    quito una carpeta
+
+commit f4b7663791fb139f59c45d4c7b8af9da53efb212
+Merge: 2e4f05c f349d8f
+Author: Oscar <oscard241@gmail.com>
+Date:   Sun Mar 29 22:31:45 2015 -0600
+
+    Merge branch 'master' of https://github.com/Skar241/RepositorioPruebas
+
+commit 2e4f05cf429a426cce40a09c8441face71ee0eab
+Author: Oscar <oscard241@gmail.com>
+Date:   Sun Mar 29 22:29:45 2015 -0600
+
+    agregando cosas
+
+commit f349d8fc429b5aa489aeff9c04d01a6a9c523b85
+Merge: 74a893d cb477f3
+Author: Oscar <oscard241@gmail.com>
+Date:   Sun Mar 29 22:11:07 2015 -0600
+
+    Merge branch 'master' of https://github.com/Skar241/RepositorioPruebas
+
+commit 74a893d931231c963fdc627713a6d7609b788b11
+Author: Oscar <oscard241@gmail.com>
+Date:   Sun Mar 29 22:08:01 2015 -0600
+
+    agregando cosas
+
+commit cb477f34bdb9b6e6e26e252712c099a77ef34135
+Author: Skar241 <oscard241@gmail.com>
+Date:   Sun Mar 29 21:03:00 2015 -0600
+
+    Initial commit
