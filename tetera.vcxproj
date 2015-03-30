@@ -11,7 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="megaman-de-vitruvio.cpp" />
+    <ClCompile Include="main_prac8_texto.cpp" />
+    <ClCompile Include="texture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="texture.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{99D31A10-859E-4DED-8A70-4D5DD70A09CD}</ProjectGuid>
