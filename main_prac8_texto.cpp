@@ -14,7 +14,7 @@ GLfloat Position[]= { 0.0f, 3.0f, 0.0f, 1.0f };			// Light Position
 GLfloat Position2[]= { 0.0f, -5.0f, 0.0f, 1.0f };			// Light Position
 
 
-Prisma prr;
+Prisma prr;///la clase Prisma la meti en el archivo texture.h, y el manejo de prisma esta en Prisma.cpp
 
 bool mov = true;
 
