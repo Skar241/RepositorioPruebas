@@ -1,10 +1,10 @@
-﻿Compilación iniciada a las 04/04/2015 10:40:51 p. m..
+﻿Compilación iniciada a las 05/04/2015 12:25:05 a. m..
      1>Proyecto "C:\Users\Antonio\Documents\Semestre 6\CG\Proyecto\tetera\tetera.vcxproj" en el nodo 2 (build destinos).
      1>InitializeBuildStatus:
          Se creará "Debug\tetera.unsuccessfulbuild" porque se especificó "AlwaysCreate".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Iinclude /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main_prac8_texto.cpp
-         main_prac8_texto.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Iinclude /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Prisma.cpp
+         Prisma.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Antonio\Documents\Semestre 6\CG\Proyecto\Debug\tetera.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib glut32.lib /MANIFEST /ManifestFile:"Debug\tetera.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Antonio\Documents\Semestre 6\CG\Proyecto\Debug\tetera.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Antonio\Documents\Semestre 6\CG\Proyecto\Debug\tetera.lib" /MACHINE:X86 Debug\main_prac8_texto.obj
          Debug\Prisma.obj
@@ -20,4 +20,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:03.69
+Tiempo transcurrido 00:00:02.74
