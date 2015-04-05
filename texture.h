@@ -20,3 +20,15 @@ public:
 	void BuildGLTexture();
 	void ReleaseImage();
 };
+
+
+class Prisma{
+	public:
+		CTexture t_Ajedrez1;
+		CTexture t_Ajedrez2;
+		CTexture t_metal01;
+
+		void Init(GLvoid);
+		void prisma (GLuint textura1, GLuint textura2);
+		void setPrisma();
+};
