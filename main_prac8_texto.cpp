@@ -15,7 +15,7 @@ GLfloat Position2[]= { 0.0f, -5.0f, 0.0f, 1.0f };			// Light Position
 
 
 
-MacEscritorio m;
+Prisma pr;
 
 
 bool mov = true;
@@ -43,7 +43,7 @@ void InitGL ( GLvoid )     // Inicializamos parametros
 	glDepthFunc(GL_LEQUAL);								// Tipo de Depth Testing a realizar
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
-	m.Init();
+	pr.Init();
 }
 
 
@@ -75,7 +75,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glPushMatrix(); 
 			glColor3f(1.0, 1.0, 1.0);
 			//glScalef(2.0,1.0,1.0);  
-			m.setMac();
+			pr.setPrisma();
 		glPopMatrix();
 
 
