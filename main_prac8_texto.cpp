@@ -15,7 +15,7 @@ GLfloat Position2[]= { 0.0f, -5.0f, 0.0f, 1.0f };			// Light Position
 
 
 
-Prisma pr;
+MacEscritorio pr;
 
 
 bool mov = true;
@@ -75,7 +75,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 		glPushMatrix(); 
 			glColor3f(1.0, 1.0, 1.0);
 			//glScalef(2.0,1.0,1.0);  
-			pr.setPrisma();
+			pr.setMac();
 		glPopMatrix();
 
 
