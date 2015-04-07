@@ -1,7 +1,19 @@
-#include "texture.h"
+#include "texture.h"//librería donde están las definiciones de los métodos y la otra librería necesaria para 
+//ejecutar sentencias
+//como en C
+//int funcion();//en lugar de escribir la definicion aquí, la escribimos en el texture.h para que podamos usar este .cpp en otros
 
-void MacEscritorio::Init(GLvoid){
-	
+//main(){
+//....
+//}
+
+//int funcion(){
+//...
+//}
+
+void MacEscritorio::Init(GLvoid){//<tipo de dato> <clase a la que pertenece>::<definición de la función>
+	//como la definición de la clase y de los métodos la hicimos en texture.h, debemos enlazar la definición de clase y método con el
+	//código que tenemos aquí por eso usamos ese formato
 	t_escudo.LoadTGA("texturas/mac_escudo.tga");
 	t_escudo.BuildGLTexture();
 	t_escudo.ReleaseImage();

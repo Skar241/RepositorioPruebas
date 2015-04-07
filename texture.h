@@ -31,17 +31,19 @@ class Prisma{
 		void Init(GLvoid);
 		void prisma (GLuint textura1, GLuint textura2);
 		void setPrisma();
+		//en el archivo donde esten los códigos de estas funciones definidas aquí deberemos especificar un "enlace"
+		//sería void Prisma::Init(GLvoid){}
 };
 
-class MacEscritorio{
+class MacEscritorio{//definicion de la calse MacEscritorio
 	public:
-		CTexture t_gris;
+		CTexture t_gris;//atributos publicos
 		CTexture t_escudo;
 		CTexture t_manzana;
 		CTexture t_display;
 
-		void Init(GLvoid);
-		void respaldo(GLuint textura);
+		void Init(GLvoid);//definición de los métodos, así podremos usarlos en cada cpp que incluyamos la librería 
+		void respaldo(GLuint textura);//texture.h
 		void desktop(GLuint textura1);
 		void prisma (GLuint textura1, GLuint textura2);
 		void setMac();
