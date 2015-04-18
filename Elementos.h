@@ -14,3 +14,15 @@ class MacEscritorio{//definicion de la calse MacEscritorio
 		void prisma (GLuint textura1, GLuint textura2);
 		void setMac();
 };
+
+class MesaBlanca{
+	public:
+		CTexture text1;
+		CTexture text2;
+		CFiguras toMesa;
+
+		void Init();
+		void tabla();
+		void pata();
+		void setMesa();
+};
