@@ -6,8 +6,8 @@
 //*************											******//
 //************************************************************//
 
-#include "texture.h"
-#include "figuras.h"
+#include "Elementos.h"
+//#include "figuras.h"
 #include "Camera.h"
 
 //NEW//////////////////NEW//////////////////NEW//////////////////NEW////////////////

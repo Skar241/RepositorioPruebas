@@ -1,4 +1,5 @@
 #include "texture.h"
+#include "figuras.h"
 
 class MacEscritorio{//definicion de la calse MacEscritorio
 	public:

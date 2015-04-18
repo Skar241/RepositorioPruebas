@@ -1,4 +1,4 @@
-#include "figuras.h"
+#include "Elementos.h"
 //Figuras creadas por Luis Sergio Valencia Castro
 
 const double PI = 3.1415926535897;
