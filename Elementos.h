@@ -24,5 +24,7 @@ class MesaBlanca{
 		void Init();
 		void tabla();
 		void pata();
+		void pata1();
 		void setMesa();
+		void setMesa1();
 };
