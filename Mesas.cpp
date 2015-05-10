@@ -4,11 +4,11 @@
 //CFiguras toMesa;
 
 void MesaBlanca::Init(){
-	text1.LoadTGA("mesaB/tabla.tga");
+	text1.LoadTGA("mesaB/blanco.tga");
 	text1.BuildGLTexture();
 	text1.ReleaseImage();
 
-	text2.LoadTGA("mesaB/gris.tga");
+	text2.LoadTGA("Lampara/metLam.tga");
 	text2.BuildGLTexture();
 	text2.ReleaseImage();
 
@@ -159,19 +159,52 @@ void MesaBlanca::setMesaJuntas(){
 	
 	glPushMatrix();
 		glTranslatef(4.5,-0.5,2.0);
-		toMesa.cilindro(0.1,3,14,text2.GLindex);
+		toMesa.cilindro(0.2,3,14,text2.GLindex);
 	glPopMatrix();
 	glPushMatrix();
 		glTranslatef(-4.5,-0.5,2.0);
-		toMesa.cilindro(0.1,3,14,text2.GLindex);
+		toMesa.cilindro(0.2,3,14,text2.GLindex);
 	glPopMatrix();
 	glPushMatrix();
 		glTranslatef(4.5,-0.5,-2.0);
-		toMesa.cilindro(0.1,3,14,text2.GLindex);
+		toMesa.cilindro(0.2,3,14,text2.GLindex);
 	glPopMatrix();
 	glPushMatrix();
 		glTranslatef(-4.5,-0.5,-2.0);
-		toMesa.cilindro(0.1,3,14,text2.GLindex);
+		toMesa.cilindro(0.2,3,14,text2.GLindex);
 	glPopMatrix();
+	glEnable(GL_LIGHTING);
+}
+
+void MesaBlanca::setEscritorio(){
+	glDisable(GL_LIGHTING);
+	glPushMatrix();
+		glTranslatef(0,3,0);
+		glScalef(10,0.6,5);
+		toMesa.prisma2(text3.GLindex,text3.GLindex);
+	glPopMatrix();
+	glPushMatrix();
+		glTranslatef(4.75,2.20,0);
+		glScalef(0.5,1,5);
+		toMesa.prisma2(text3.GLindex,text3.GLindex);
+	glPopMatrix();
+
+	glPushMatrix();
+		glTranslatef(-4.75,2.20,0);
+		glScalef(0.5,1,5);
+		toMesa.prisma2(text3.GLindex,text3.GLindex);
+	glPopMatrix();
+	glEnable(GL_LIGHTING);
+}
+
+void MesaBlanca::divisor(int op){
+	glDisable(GL_LIGHTING);
+	glPushMatrix();
+		glTranslatef(0,7.5,0);
+		glScalef(0.5,5,18);
+		glRotatef(90,0,0,1);
+		toMesa.prisma2(text1.GLindex,text2.GLindex);
+	glPopMatrix();
+	setMesa1();
 	glEnable(GL_LIGHTING);
 }

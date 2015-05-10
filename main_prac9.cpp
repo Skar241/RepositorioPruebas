@@ -9,10 +9,19 @@
 #include "Elementos.h"
 //#include "figuras.h"
 #include "Camera.h"
+#include "Audio.h"
 
 //NEW//////////////////NEW//////////////////NEW//////////////////NEW////////////////
 CCamera objCamera; 
 
+Elementos silla;
+Oficina of;
+
+Jardineras jardin;
+Torres torre;
+
+int flgL;
+int flgP;
 
 GLfloat g_lookupdown = 0.0f;    // Look Position In The Z-Axis (NEW) 
 //NEW//////////////////NEW//////////////////NEW//////////////////NEW////////////////
@@ -49,8 +58,9 @@ GLfloat m_spec2[] = { 0.0, 0.0, 0.0, 1.0 };				// Specular Light Values
 GLfloat m_amb2[] = { 0.0, 0.0, 0.0, 1.0 };				// Ambiental Light Values
 GLfloat m_s2[] = {22};
 
-CTexture text1;
-CTexture text2;
+CTexture cielo;
+CTexture suelo;
+
 CTexture text3;	//Flecha
 CTexture text4;	//Pavimento
 CTexture text5;	//Pasto01
@@ -67,7 +77,8 @@ float colorR = 0.0;
 float colorG = 0.0;
 float colorB = 0.0;
 
-			
+bool g_fanimacion = false;
+
 void InitGL ( )     // Inicializamos parametros
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);				// Negro de fondo	
@@ -100,10 +111,23 @@ void InitGL ( )     // Inicializamos parametros
     //glBlendFunc(GL_SRC_ALPHA,GL_ONE);			// Set The Blending Function For Translucency
     //glColor4f(1.0f, 1.0f, 1.0f, 0.5); 
     
+	///////////////////////////////////////////////////////////////////////////////
+	of.Init();
 
-	text1.LoadBMP("01.bmp");
-	text1.BuildGLTexture();
-	text1.ReleaseImage();
+	jardin.Init();
+	torre.Init();
+
+	//silla.Init();
+	///////////////////////////////////////////////////////////////////////////////
+
+	cielo.LoadBMP("Construccion/01.bmp");
+	cielo.BuildGLTexture();
+	cielo.ReleaseImage();
+
+	suelo.LoadTGA("Construccion/pavQuad.tga");
+	suelo.BuildGLTexture();
+	suelo.ReleaseImage();
+
 
 
 	text5.LoadTGA("pasto01.tga");
@@ -141,6 +165,8 @@ void display ( void )   // Creamos la funcion donde se dibuja
 	
 		
 	glPushMatrix();
+
+	glScalef(2,1,1.2);
 	glRotatef(g_lookupdown,1.0f,0,0);
 
 		gluLookAt(	objCamera.mPos.x,  objCamera.mPos.y,  objCamera.mPos.z,	
@@ -148,39 +174,121 @@ void display ( void )   // Creamos la funcion donde se dibuja
 					objCamera.mUp.x,   objCamera.mUp.y,   objCamera.mUp.z);
 	
 
-		glPushMatrix();		
+			glPushMatrix();		
 			glPushMatrix(); //Creamos cielo
 				glDisable(GL_LIGHTING);
 				glTranslatef(0,60,0);
-				fig1.skybox(130.0, 130.0, 130.0,text1.GLindex);
+				fig1.skybox(150.0, 150.0, 130.0,cielo.GLindex, suelo.GLindex);
 				glEnable(GL_LIGHTING);
 			glPopMatrix();
 			
 			//Poner figuras aqui
-			
-
-			
-
-			
-
-			
-
-			
-			
-			glPushMatrix(); //Pasto
-				glTranslatef(0.0,0.0,-4.0);
-				glScalef(87,0.1,1);
+			glDisable(GL_LIGHTING);//sólo para ver mejor las figuras
+			glTranslatef(0,-9,-10);
+			//********************
+			glPushMatrix();//////////////////////////////////////////////oficina
+				glTranslatef(18,-2.8,-1.4);
+				glScalef(0.185,0.49,0.39);
+				of.setOffice();
+				//of.piso();
+			glPopMatrix();
+			//edificio
+			glPushMatrix();
 				glDisable(GL_LIGHTING);
-				fig4.prisma2(text5.GLindex, 0);
+				glScalef(1.8,1,1.8);
+				torre.creaEdificio();
+				//++++++
+				//creamos cristales de edificio
 				glEnable(GL_LIGHTING);
 			glPopMatrix();
+			//***********************
+			//jardineras con árbol
+			//para el sistema local de esta jardinera eje z local-> x global
+			glPushMatrix();
+				glTranslatef(-50,-5,-35);
+				glPushMatrix();
+					glRotatef(90,0,1,0);
+					glScalef(1.8,1.2,1.4);
+					jardin.setJardineraArbolIzq();
+					glPopMatrix();
+				glPushMatrix();
+					glTranslatef(100,0,0);
+					glRotatef(-90,0,1,0);
+					glScalef(1.8,1.2,1.4);
+					jardin.setJardineraArbolDer();
+					glPopMatrix();
+				glPopMatrix();
+			//*************************
+			//jardineras básicas
+				glPushMatrix();
+					glTranslatef(-50,-5,-20);
+					jardin.JardineraBase(1.2,15,30);//altura, largo, profundidad
+					glTranslatef(100,0,-15);
+					glRotatef(180,0,0,1);
+					jardin.JardineraBase(1.2,15,30);
+					glPopMatrix();
+			//******************************
+				//jardineras con pino
+				glPushMatrix();
+					glTranslatef(-48,-3.5,20);
+					glPushMatrix();
+						glRotatef(-90,0,1,0);
+						glScalef(1,1,1.5);
+						jardin.setJardineraPinoIzq();
+						glPopMatrix();
+					glTranslatef(98,-3,0);
+					glRotatef(90,0,1,0);
+					glScalef(1,1,1.5);
+					jardin.setJardineraPinoDer();
+					glPopMatrix();
+			//********************************
+					//jardineras frontales irregulares
+				glPushMatrix();
+					glTranslatef(-20,-7,40);
+					glPushMatrix();
+						glScalef(3.7,1.2,3.5);
+						jardin.JardineraPino();
+						glPopMatrix();
+					glTranslatef(40,3.5,0);
+					glRotatef(180,0,0,1);
+					glScalef(3.7,1.2,3.5);
+					jardin.JardineraPino();
+					glPopMatrix();
+			//*****************************
+					//jardineras frontales
+				glPushMatrix();
+					glPushMatrix();
+					glTranslatef(12,-5,5);
+						glScalef(15,1,5);
+						jardin.jardinerasFrontales();
+						glPopMatrix();
+					glPushMatrix();
+						glTranslatef(-12,-5,5);
+						glRotatef(180,0,0,1);
+						glScalef(15,1,5);
+						jardin.jardinerasFrontales();
+						glPopMatrix();
+				glPopMatrix();
+		//****************************
+				//glPushMatrix();
+					//glTranslatef(2,0,0);
+					//glScalef(10,5,10);
+					//torre.vestibulo();
+					//glPopMatrix();
+
+			//************************
+
+				//Vestibulo
+				glPushMatrix();
+					glTranslatef(0,-5,10.5);
+					glScalef(0.45,1,0.3);
+					torre.parteTrasera();
+					glPopMatrix();
+		
 
 			
-			
-			
-
-
-
+			//glScalef(0.1,0.1,0.1);
+			//
 
 		glPopMatrix();
 	glPopMatrix();
@@ -188,8 +296,8 @@ void display ( void )   // Creamos la funcion donde se dibuja
 	glDisable(GL_TEXTURE_2D);
 		glDisable(GL_LIGHTING);
 			glColor3f(1.0,0.0,0.0);
-			pintaTexto(-0.25,0.23,-0.25,(void *)font,"Practica 9");
-			pintaTexto(-0.25,0.21,-0.25,(void *)font,"Textura en Movimiento");
+			pintaTexto(-0.25,0.23,-0.25,(void *)font,"Proyecto Final");
+			pintaTexto(-0.25,0.21,-0.25,(void *)font,"Oficinas");
 			glColor3f(1.0,1.0,1.0);
 		glEnable(GL_LIGHTING);
 		glEnable(GL_TEXTURE_2D);
@@ -207,6 +315,50 @@ void animacion()
 	if(fig3.text_der<0)
 		fig3.text_der=1;
 	glutPostRedisplay();
+	if(g_fanimacion){
+		if(flgL==1){
+			of.elem.rotateL++;
+			if(of.elem.getRotateLamp()>=50)
+				flgL=2;
+		}
+		else if(flgL==2){
+			of.elem.rotateL--;
+			if(of.elem.getRotateLamp()<=-60)
+				flgL=3;
+		}
+		else if(flgL==3){
+			of.elem.rotateL++;
+			if(of.elem.getRotateLamp()>=20)
+				flgL=4;
+		}
+		else if(flgL==4){
+			of.elem.rotateL--;
+			if(of.elem.getRotateLamp()<=0)
+				flgL=5;
+		}
+		else if(flgP==1){
+			of.rotPerilla++;
+			if(of.rotPerilla>=50)
+				flgP=2;
+		}
+		else if(flgP==2){
+			of.rotPuerta++;
+			if(of.rotPuerta>=90)
+				flgP=3;
+		}
+		else if(flgP==3){
+			of.rotPerilla--;
+			if(of.rotPerilla<=0)
+				flgP=4;
+		}
+		else if(flgP==4){
+			of.rotPuerta--;
+			if(of.rotPuerta<=0)
+				flgP=5;
+		}
+		else g_fanimacion=false;
+
+	}
 }
 
 void reshape ( int width , int height )   // Creamos funcion Reshape
@@ -262,6 +414,17 @@ void keyboard ( unsigned char key, int x, int y )  // Create Keyboard Function
 			
 			break;
 
+		case '1':		//
+			g_fanimacion^=true;
+			flgL=1;
+			flgP=5;
+			break;
+		case '2':
+			g_fanimacion^=true;
+			flgP=1;
+			flgL=5;
+			break;
+
 		case 27:        // Cuando Esc es presionado...
 			exit ( 0 );   // Salimos del programa
 			break;        
@@ -314,6 +477,7 @@ void arrow_keys ( int a_keys, int x, int y )  // Funcion para manejo de teclas e
 
 int main ( int argc, char** argv )   // Main Function
 {
+  setAudio();
   glutInit            (&argc, argv); // Inicializamos OpenGL
   glutInitDisplayMode (GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH); // Display Mode (Clores RGB y alpha | Buffer Doble )
   glutInitWindowSize  (500, 500);	// Tamaño de la Ventana
@@ -325,7 +489,7 @@ int main ( int argc, char** argv )   // Main Function
   glutReshapeFunc     ( reshape );	//Indicamos a Glut función en caso de cambio de tamano
   glutKeyboardFunc    ( keyboard );	//Indicamos a Glut función de manejo de teclado
   glutSpecialFunc     ( arrow_keys );	//Otras
-glutIdleFunc		  ( animacion );
+  glutIdleFunc		  ( animacion );
   glutMainLoop        ( );          // 
 
   return 0;

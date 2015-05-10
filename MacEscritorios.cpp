@@ -19,6 +19,10 @@ void MacEscritorio::Init(GLvoid){//<tipo de dato> <clase a la que pertenece>::<d
 	t_display.BuildGLTexture();
 	t_display.ReleaseImage();
 
+	t_tecla.LoadTGA("texturas/tec.tga");
+	t_tecla.BuildGLTexture();
+	t_tecla.ReleaseImage();
+
 }
 
 void MacEscritorio::prisma (GLuint textura1, GLuint textura2)  //Funcion creacion prisma
@@ -88,11 +92,6 @@ void MacEscritorio::prisma (GLuint textura1, GLuint textura2)  //Funcion creacio
 		glBegin(GL_POLYGON);  //Top
 			//glColor3f(0.8,0.2,0.4);
 			glColor3f(1.0,1.0,1.0);
-			/*glNormal3f( 0.0f, 1.0f, 0.0f);
-			glTexCoord2f(1.0f, 0.0f); glVertex3fv(vertice[4]);
-			glTexCoord2f(1.0f, 1.0f); glVertex3fv(vertice[5]);
-			glTexCoord2f(0.0f, 1.0f); glVertex3fv(vertice[6]);
-			glTexCoord2f(0.0f, 0.0f); glVertex3fv(vertice[7]);*/
 			glTexCoord2f(1.0, 0.0f); glVertex3fv(vertice[4]);
 			glTexCoord2f(1.0, 1.0f); glVertex3fv(vertice[5]);
 			glTexCoord2f(0.0, 1.0f); glVertex3fv(vertice[6]);
@@ -187,4 +186,40 @@ void MacEscritorio::setMac(){
 		glPopMatrix();
 	glPopMatrix();
 
+}
+
+void MacEscritorio::setMacBook(){
+	glPushMatrix();
+		glScalef(0.2,0.2,0.2);
+		glPushMatrix();
+			glScalef(6.0,4.0,0.5);//mandamos el monitor
+			prisma(t_escudo.GLindex, t_gris.GLindex);
+
+		glPopMatrix();
+
+		glPushMatrix();
+			glTranslatef(0,0.25,0);
+			glScalef(6,3.5,1);//mandamos el display
+			desktop(t_display.GLindex);
+		glPopMatrix();
+
+		glPushMatrix();
+			glTranslatef(0,-1.75,0);
+			glScalef(0.5,0.5,1);//mandamos la manzana
+			desktop(t_manzana.GLindex);
+		glPopMatrix();
+
+		glPushMatrix();
+			glRotatef(-90,1,0,0);
+			glTranslatef(0,2.3,-2.5);
+			glScalef(6.0,4.0,0.5);//mandamos la carcasa
+			prisma(t_tecla.GLindex, t_gris.GLindex);
+
+		glPopMatrix();
+
+		glRotatef(90,0,0,1);
+		glTranslatef(-2.1,-3,-0.3);
+		toMac.cilindro(0.2,6,14,t_gris.GLindex);
+
+	glPopMatrix();
 }
