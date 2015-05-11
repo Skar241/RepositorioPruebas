@@ -303,9 +303,9 @@ void Oficina::mesa3Godinez(){
 
 void Oficina::setOffice(){
 	
-	mesa1Godinez();
-	mesa2Godinez();
-	mesa3Godinez();
+	//mesa1Godinez();
+	//mesa2Godinez();
+	//mesa3Godinez();
 ///////////////fin sala godinez
 /////////sala juntas 
 

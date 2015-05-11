@@ -1,6 +1,7 @@
 #include "texture.h"
 #include "figuras.h"
 
+
 class MacEscritorio{//definicion de la calse MacEscritorio
 	public:
 		CTexture t_gris;//atributos publicos
@@ -95,7 +96,9 @@ class Torres {
 		CTexture supDoor;
 		CTexture Ventana;
 		CTexture Pint;
-
+		CTexture Lluvia;
+ 		float offset;
+		void lluvia();
 	//metodos
 		void Init();
 		void crearTorre(float altura, float largo, float profundidad);

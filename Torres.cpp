@@ -40,6 +40,10 @@ void Torres::Init(){
 	Pint.LoadTGA("construccion/edificio/blanca.tga");
 	Pint.BuildGLTexture();
 	Pint.ReleaseImage();
+
+	Lluvia.LoadTGA("construccion/lluvia.tga");
+	Lluvia.BuildGLTexture();
+	Lluvia.ReleaseImage();
 }
 //altura, largo profundidad
 void Torres::crearTorre(float altura, float largo,float profundidad){//centro en  el medio de la torre
@@ -115,7 +119,7 @@ void Torres::escaleras(){
 	glTranslatef(0,1,1);
 	poligono.prismaEdif(1,10,4,Escalones.GLindex);
 	glTranslatef(0,1,1);
-	poligono.prismaEdif(1,10,2,Escalera.GLindex);
+	poligono.prismaEdif(1,10,2,Escalones.GLindex);
 }
 
 void Torres::creaEdificio(){
@@ -242,4 +246,50 @@ void Torres::vestibulo(){
 
 	glDisable(GL_ALPHA_TEST);
 	//glDisable(GL_BLEND);
+}
+void Torres::lluvia(){
+	glPushMatrix();
+		glDisable(GL_LIGHTING);
+		glEnable(GL_ALPHA_TEST);//habilita transparencia
+		glAlphaFunc(GL_GREATER,0.1);//tolerancia de que será transparente y que no
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_DST_COLOR);
+		glBindTexture(GL_TEXTURE_2D,Lluvia.GLindex);
+		//glColor3f(0.8,0.8,0.8);
+		//glBegin(GL_QUADS);//parte trasera del poligono
+ 			//glNormal3f(0,0,1);
+ 			//	glTexCoord2f(0+offset,0+offset); glVertex3f(20,0,-20);
+ 			//	glTexCoord2f(0+offset,1+offset); glVertex3f(-20,10,-20);
+ 			//	glTexCoord2f(1+offset,0+offset); glVertex3f(20,10,-20);
+ 			//	glTexCoord2f(1+offset,1+offset); glVertex3f(20,0,-20);
+		//	glEnd();
+ 		glColor3f(1,1,1);
+		//	glBegin(GL_QUADS);//lateral x
+ 				//glNormal3f(0,0,1);
+			//	glTexCoord2f(0-offset,1-offset); glVertex3f(-20,10,-20);
+			//	glTexCoord2f(0-offset,0-offset); glVertex3f(-20,0,-20);
+			//	glTexCoord2f(1-offset,0-offset); glVertex3f(-20,0,20);
+			//	glTexCoord2f(1-offset,1-offset); glVertex3f(-20,10,20);
+		//	glEnd();
+
+		//	glBegin(GL_QUADS);//lateral x+
+ 			//glNormal3f(0,0,1);
+			//	glTexCoord2f(0-offset,1-offset); glVertex3f(20,10,20);
+			//	glTexCoord2f(0-offset,0-offset); glVertex3f(20,0,20);
+			//	glTexCoord2f(1-offset,0-offset); glVertex3f(20,0,-20);
+			//	glTexCoord2f(1-offset,1-offset); glVertex3f(20,10,-20);
+		//	glEnd();
+
+ 		glBegin(GL_QUADS);//frontal
+ 			//glNormal3f(0,0,1);
+ 			glTexCoord2f(0-offset,1-offset); glVertex3f(-20,20,20);
+ 			glTexCoord2f(0-offset,0-offset); glVertex3f(-20,0,20);
+ 			glTexCoord2f(1-offset,0-offset); glVertex3f(20,0,20);
+ 			glTexCoord2f(1-offset,1-offset); glVertex3f(20,20,20);
+ 		glEnd();
+
+ 		glDisable(GL_BLEND);
+ 		glDisable(GL_ALPHA_TEST);
+  
+ 	glPopMatrix();
 }

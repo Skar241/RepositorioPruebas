@@ -12,6 +12,7 @@ class CFiguras
 
 	float text_der;
 	float text_izq;
+	
 
 	void esfera(GLfloat radio, int meridianos, int paralelos, GLuint text); //Funcíon creacion esfera
 	//void cilindro(float radio, float altura, int resolucion, GLuint text);	//Funcíon creacion cilindro
